@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		267FEA572A17E02100A8F559 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267FEA562A17E02100A8F559 /* Styles.swift */; };
+		267FEA592A1A7D6400A8F559 /* FetchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267FEA582A1A7D6400A8F559 /* FetchingView.swift */; };
+		267FEA5B2A1A7F3100A8F559 /* TextFieldClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267FEA5A2A1A7F3100A8F559 /* TextFieldClearButton.swift */; };
 		26F221D82A13E88E00A35C13 /* AppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F221D72A13E88E00A35C13 /* AppEntry.swift */; };
 		26F221DA2A13E88E00A35C13 /* DALLEImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F221D92A13E88E00A35C13 /* DALLEImagesView.swift */; };
 		26F221DC2A13E89000A35C13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26F221DB2A13E89000A35C13 /* Assets.xcassets */; };
@@ -20,6 +22,8 @@
 
 /* Begin PBXFileReference section */
 		267FEA562A17E02100A8F559 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		267FEA582A1A7D6400A8F559 /* FetchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingView.swift; sourceTree = "<group>"; };
+		267FEA5A2A1A7F3100A8F559 /* TextFieldClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldClearButton.swift; sourceTree = "<group>"; };
 		26F221D42A13E88E00A35C13 /* Art Generator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Art Generator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F221D72A13E88E00A35C13 /* AppEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntry.swift; sourceTree = "<group>"; };
 		26F221D92A13E88E00A35C13 /* DALLEImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DALLEImagesView.swift; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				26F221EF2A168F7E00A35C13 /* DDALLE Images */,
+				267FEA582A1A7D6400A8F559 /* FetchingView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -106,6 +111,7 @@
 			children = (
 				26F221D92A13E88E00A35C13 /* DALLEImagesView.swift */,
 				26F221F02A1690CC00A35C13 /* ViewModel.swift */,
+				267FEA5A2A1A7F3100A8F559 /* TextFieldClearButton.swift */,
 			);
 			path = "DDALLE Images";
 			sourceTree = "<group>";
@@ -182,11 +188,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				26F221F12A1690CC00A35C13 /* ViewModel.swift in Sources */,
+				267FEA5B2A1A7F3100A8F559 /* TextFieldClearButton.swift in Sources */,
 				26F221EA2A153A3B00A35C13 /* Models.swift in Sources */,
 				26F221DA2A13E88E00A35C13 /* DALLEImagesView.swift in Sources */,
 				267FEA572A17E02100A8F559 /* Styles.swift in Sources */,
 				26F221EC2A153B1300A35C13 /* APIService.swift in Sources */,
 				26F221D82A13E88E00A35C13 /* AppEntry.swift in Sources */,
+				267FEA592A1A7D6400A8F559 /* FetchingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,8 +333,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -356,8 +364,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

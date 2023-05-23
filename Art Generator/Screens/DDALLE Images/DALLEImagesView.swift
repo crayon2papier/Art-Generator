@@ -16,21 +16,12 @@ struct DALLEImagesView: View {
         NavigationStack {
             VStack {
                 if !vm.urls.isEmpty {
-                    HStack {
-                        ForEach(vm.dallEImages) { dalleImage in
-                            if let uiImage = dalleImage.uiImage {
-                                Image(uiImage: uiImage)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 80, height: 80)
-                                    .onTapGesture {
-                                        vm.selectedImage = uiImage
-                                    }
-                            } else {
-                                ProgressView()
-                                    .frame(width: 80, height: 80)
-                            }
-                            
+                    ViewThatFits {
+                        PreviewImage(vm: vm)
+                            .padding()
+                        ScrollView(.horizontal) {
+                            PreviewImage(vm: vm)
+                                .padding()
                         }
                     }
                 }
@@ -49,6 +40,7 @@ struct DALLEImagesView: View {
                         TextField("Image Description...",
                                   text: $vm.prompt,
                                   axis: .vertical)
+                        .showClearButton($vm.prompt)
                         .textFieldStyle(.roundedBorder)
                         .padding(.horizontal)
                         
@@ -101,13 +93,24 @@ struct DALLEImagesView: View {
                     } else {
                         Text(vm.description)
                             .padding()
-                        Button("Try another") {
-                            vm.reset()
+                        
+                        HStack {
+                            if vm.selectedImage != nil {
+                                Button("Get Variation") {
+                                    vm.fetchVariations()
+                                }
+                            }
+                            Button("Try another") {
+                                vm.reset()
+                            }
+                            
                         }
                         .buttonStyle(.borderedProminent)
                     }
                 } else {
-                    ProgressView()
+                    Spacer()
+                    FetchingView()
+                    Spacer()
                 }
                 if vm.selectedImage == nil && !vm.urls.isEmpty {
                     Image("Artist")
@@ -116,8 +119,57 @@ struct DALLEImagesView: View {
             }
             .navigationTitle("Art Generator")
             .edgesIgnoringSafeArea(.bottom)
+            .toolbar {
+                if let selectedImage = vm.selectedImage {
+                    ToolbarItem {
+                        ShareLink(item: Image(uiImage: selectedImage),
+                                  subject: Text("Generated Image"),
+                                  message: Text(vm.description),
+                                  preview: SharePreview(Text("Generated Image"),
+                                                        image: Image(uiImage: selectedImage)))
+                    }
+                }
+            }
+            .alert("Processing error", isPresented: $vm.showAlert) {
+                Button("OK") {}
+            } message: {
+                Text("Unable to process this request. Your image descprition cannot be interpreted")
+                    
+                
+            }
         }
     }
+}
+
+struct PreviewImage: View {
+    
+    @ObservedObject var vm: ViewModel
+    @Environment(\.horizontalSizeClass) var hsc
+    
+    var body: some View {
+        
+        HStack {
+            ForEach(vm.dallEImages) { dalleImage in
+                if let uiImage = dalleImage.uiImage {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: hsc == .compact ? 80 : 120,
+                               height: hsc == .compact ? 80 : 120)
+                        .onTapGesture {
+                            vm.selectedImage = uiImage
+                        }
+                } else {
+                    ProgressView()
+                        .frame(width: hsc == .compact ? 80 : 120,
+                               height: hsc == .compact ? 80 : 120)
+
+                }
+                
+            }
+        }
+    }
+    
 }
 
 struct DALLEImagesView_Previews: PreviewProvider {
