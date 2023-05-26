@@ -11,6 +11,7 @@ import SwiftUI
 class ViewModel: ObservableObject {
     
     @Published var prompt = ""
+    @Published var name = ""
     @Published var urls: [URL] = []
     @Published var dallEImages: [DalleImage] = []
     @Published var fetching = false
@@ -25,8 +26,10 @@ class ViewModel: ObservableObject {
     
     
     var description: String {
+        let logo = "Crée un logo pour "
+        let pour = " une marque de "
         let characteristics = imageStyle.description + imageMedium.description + artist.description + style.description
-        return prompt + (!characteristics.isEmpty ? "\n- " + characteristics : "")
+        return logo + name + pour + prompt + (!characteristics.isEmpty ? "\n- " + characteristics : "")
     }
     
     let apiService = APIService()
@@ -45,6 +48,7 @@ class ViewModel: ObservableObject {
         imageStyle = .aucun
         imageMedium = .none
         artist = .none
+        style = .none
     }
     
     init() {

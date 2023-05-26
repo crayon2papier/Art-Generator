@@ -36,15 +36,26 @@ struct DALLEImagesView: View {
                             .frame(width: 256, height: 256)
                     }
                     if vm.urls.isEmpty {
-                        Text("Explicitez au mieux le logo que vous souhaitez créer")
-                            .multilineTextAlignment(.center)
-                            .padding(.horizontal)
-                        TextField("Description de votre logo...",
-                                  text: $vm.prompt,
-                                  axis: .horizontal)
+                        Text("Ce que vous proposez : ")
+                            .padding(.trailing, 200.0)
+                            
+                        
+                        
+                        TextField("Description de votre entreprise...",
+                                  text: $vm.prompt)
                         .showClearButton($vm.prompt)
                         .textFieldStyle(.roundedBorder)
                         .padding(.horizontal)
+                        
+                        
+                        Text("Votre marque s'appelle")
+                        
+                        TextField("Nom de votre marque...",
+                                  text: $vm.name)
+                        .showClearButton($vm.name)
+                        .textFieldStyle(.roundedBorder)
+                        .padding(.horizontal)
+                        
                         
                         Form {
                             Picker("Couleur", selection: $vm.imageStyle) {
