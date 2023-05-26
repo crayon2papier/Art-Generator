@@ -9,7 +9,7 @@ import SwiftUI
 
 enum Constants {
     static let imageSize = "256x256"
-    static let n = 5
+    static let n = 3
 }
 
 struct GenerationInput: Codable {

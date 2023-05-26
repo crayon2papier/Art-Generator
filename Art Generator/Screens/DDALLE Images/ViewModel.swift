@@ -16,15 +16,16 @@ class ViewModel: ObservableObject {
     @Published var fetching = false
     @Published var selectedImage: UIImage?
     
-    @Published var imageStyle = ImageStyle.none
+    @Published var imageStyle = ImageStyle.aucun
     @Published var imageMedium = ImageMedium.none
     @Published var artist = Artist.none
+    @Published var style = Style.none
     
     @Published var showAlert = false
     
     
     var description: String {
-        let characteristics = imageStyle.description + imageMedium.description + artist.description
+        let characteristics = imageStyle.description + imageMedium.description + artist.description + style.description
         return prompt + (!characteristics.isEmpty ? "\n- " + characteristics : "")
     }
     
@@ -41,7 +42,7 @@ class ViewModel: ObservableObject {
     
     func reset() {
         clearProperties()
-        imageStyle = .none
+        imageStyle = .aucun
         imageMedium = .none
         artist = .none
     }

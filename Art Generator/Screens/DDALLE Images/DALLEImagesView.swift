@@ -36,16 +36,18 @@ struct DALLEImagesView: View {
                             .frame(width: 256, height: 256)
                     }
                     if vm.urls.isEmpty {
-                        Text("The more descriptive you can be the better")
-                        TextField("Image Description...",
+                        Text("Explicitez au mieux le logo que vous souhaitez créer")
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal)
+                        TextField("Description de votre logo...",
                                   text: $vm.prompt,
-                                  axis: .vertical)
+                                  axis: .horizontal)
                         .showClearButton($vm.prompt)
                         .textFieldStyle(.roundedBorder)
                         .padding(.horizontal)
                         
                         Form {
-                            Picker("Style", selection: $vm.imageStyle) {
+                            Picker("Couleur", selection: $vm.imageStyle) {
                                 ForEach(ImageStyle.allCases, id: \.self) { imageStyle in
                                     Text(imageStyle.rawValue)
                                     
@@ -54,7 +56,7 @@ struct DALLEImagesView: View {
                         
                         
                         
-                            Picker("ImageMedium", selection: $vm.imageMedium) {
+                            Picker("Tendance", selection: $vm.imageMedium) {
                                 ForEach(ImageMedium.allCases, id: \.self) { imageMedium in
                                     Text(imageMedium.rawValue)
                                     
@@ -63,10 +65,16 @@ struct DALLEImagesView: View {
                         
                         
                         
-                            Picker("Artist", selection: $vm.artist) {
+                            Picker("Type", selection: $vm.artist) {
                                 ForEach(Artist.allCases, id: \.self) { artist in
                                     Text(artist.rawValue)
                                     
+                                }
+                            }
+                            
+                            Picker("Style", selection: $vm.style) {
+                                ForEach(Style.allCases, id: \.self) { style in
+                                    Text(style.rawValue)
                                 }
                             }
                        
@@ -117,7 +125,7 @@ struct DALLEImagesView: View {
                 }
                 Spacer()
             }
-            .navigationTitle("Art Generator")
+            .navigationTitle("Créez votre logo")
             .edgesIgnoringSafeArea(.bottom)
             .toolbar {
                 if let selectedImage = vm.selectedImage {

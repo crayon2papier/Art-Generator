@@ -29,6 +29,8 @@ struct FetchingView: View {
     }
 }
 
+
+
 struct FetchingView_Previews: PreviewProvider {
     static var previews: some View {
         FetchingView()

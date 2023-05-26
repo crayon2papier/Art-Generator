@@ -8,48 +8,76 @@
 import Foundation
 
 enum ImageStyle: String, CaseIterable {
-    case none
-    case abstract = "abstract"
-    case cartoon
-    case comic
-    case expressionism
-    case impressionism
-    case popArt = "pop Art"
-    case realism
-    case surrealism
+    case aucun = "aucune"
+    case blanc = "blanche"
+    case noir
+    case pourpre
+    case rouge
+    case orange
+    case jaune
+    case vert
+    case bleu
+    case violet = "violette"
+    case ivoire
+    case crème
+    case beige
+    case rose
+    case kaki
+    case brun
+    case marron
+    case bordeaux
   
     var description: String {
-        self != .none ? "an image in the style of " + self.rawValue + " " : ""
+        self != .aucun ? "avec une couleur " + self.rawValue + " " : ""
     }
 }
 
 
 enum ImageMedium: String, CaseIterable {
-    case none
-    case digital = "digital art"
-    case oil = "oil painting"
-    case pastel
-    case photo
-    case spray = "spay print"
-    case watercolor
+    case none = "aucune"
+    case pale = "pâle"
+    case gris = "grisé"
+    case sombre
+    case clair
+    case moyen
+    case foncé
+    case vif
+    case intense
+    case profond
     
     var description: String {
-        self != .none ? "using the medium of " + self.rawValue + " " : ""
+        self != .none ? "" + self.rawValue + " " : ""
     }
 }
 
 enum Artist: String, CaseIterable {
-    case none
-    case dali = "Salvador Dali"
-    case davinci = "Leonardo da Vinci"
-    case matisse = "Henry Matisse"
-    case monet = "Claude Monet"
-    case picasso = "Pablo Picasso"
-    case pollock = "Jackson Pollock"
-    case vangogh = "Vincent van Gogh"
-    case warhol = "Andy Warhol"
+    case none = "aucun"
+    case symbole = "Mot symbole"
+    case lettre = "Logo avec lettres"
+    case monogramme = "Monogramme"
+    case pictogramme = "Pictogramme"
+    case abstrait = "Abstrait"
+    case mascotte = "Mascotte"
+    case embleme = "Emblème"
+    case combinaison = "Combinaison Logo"
+    
    
     var description: String {
-        self != .none ? "similar to the works of " + self.rawValue + " " : ""
+        self != .none ? "avec pour type de logo " + self.rawValue + " " : ""
+    }
+}
+
+enum Style: String, CaseIterable {
+    case none = "aucun"
+    case mixte
+    case arrondis
+    case creatif = "créatif"
+    case elegant = "élégant"
+    case futuriste
+    case gras
+    case xxl = "XXL"
+    
+    var description: String {
+        self != .none ? "avec un style " + self.rawValue + " " : ""
     }
 }
